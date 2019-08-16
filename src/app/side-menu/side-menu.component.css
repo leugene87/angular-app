@@ -1,0 +1,10 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+.selectedMenuItem{
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+.currentMenuItem{
+    color: #00bfa5;
+}

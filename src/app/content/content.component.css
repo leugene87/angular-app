@@ -8,9 +8,8 @@
   right: 0;
 }
 
-.app-top {
-  margin: 12px;
-  color: white;
+.example-icon {
+  padding: 0 4px;
 }
 
 .example-spacer {
@@ -25,10 +24,14 @@
 }
 
 mat-toolbar {
-    max-height: 50px;
-    min-height: 50px;
+    max-height: 35px;
+    min-height: 35px;
 }
-.container{
-    text-align-last: center;
-    margin-top: 200px;
+.spinner-box{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 100%;
+      min-height: 100%;
+
 }

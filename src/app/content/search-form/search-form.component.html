@@ -1,0 +1,23 @@
+<form class="form" style="margin: 12px" #f="ngForm" (ngSubmit)="doSearch(f)" *ngIf="!loginInProccess">
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Criteria</mat-label>
+        <mat-select name="criteria" ngModel required>
+            <mat-option value="account">account</mat-option>
+            <mat-option value="id">id</mat-option>
+            <mat-option value="name">name</mat-option>
+            <mat-option value="catalogCode">catalog code</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Value</mat-label>
+        <input matInput name="searchValue" placeholder="type vendor account here..." ngModel required
+            [minlength]="f.value.criteria == 'id' ? 0 : 3">
+    </mat-form-field>
+    <button mat-mini-fab color="primary" type="submit" [disabled]="!f.valid">
+        <mat-icon>search</mat-icon>
+    </button>
+    <button mat-mini-fab color="warn" type="submit" [disabled]="!f.dirty" (click)="f.reset()">
+        <mat-icon>clear</mat-icon>
+    </button>
+    <div *ngIf="errorMsg" style="color: red; text-align: center">{{errorMsg}}</div>
+</form>

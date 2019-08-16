@@ -1,0 +1,50 @@
+<div class="container">
+    <h2 *ngIf="!loggedUser">There is no logged in user!</h2>
+    <h2>User Info:</h2>
+    <div *ngIf="loggedUser" class="list-group" style="color:black">
+        <div class="row list-group-item">
+            <div class="col-md-2 text-right">USERNAME:</div>
+            <div class="col-md-10" style="overflow:auto">{{loggedUser.userName}}</div>
+        </div>
+        <div class="row list-group-item">
+            <div class="col-md-2 text-right">ID:</div>
+            <div class="col-md-10" style="overflow:auto">{{loggedUser.id}}</div>
+        </div>
+        <div class="row list-group-item">
+            <div class="col-md-2 text-right">REAL NAME:</div>
+            <div class="col-md-10" style="overflow:auto">{{loggedUser.realName}}</div>
+        </div>
+        <div class="row list-group-item">
+            <div class="col-md-2 text-right">FIRST NAME:</div>
+            <div class="col-md-10" style="overflow:auto">{{loggedUser.realName}}</div>
+        </div>
+        <div class="row list-group-item">
+            <div class="col-md-2 text-right">EMAIL:</div>
+            <div class="col-md-10" style="overflow:auto">{{loggedUser.email}}</div>
+        </div>
+        <div class="row list-group-item">
+            <div class="col-md-2 text-right">PHONE:</div>
+            <div class="col-md-10" style="overflow:auto">{{loggedUser.phone}}</div>
+        </div>
+        <div class="row list-group-item">
+            <div class="col-md-2 text-right">AVATAR URI:</div>
+            <div class="col-md-10" style="overflow:auto">{{loggedUser.avatarURI}}</div>
+        </div>
+        <div class="row list-group-item">
+            <div class="col-md-2 text-right">ROLE:</div>
+            <div class="col-md-10" style="overflow:auto">{{loggedUser.resourceRoleCode}}</div>
+        </div>
+        <div class="row list-group-item">
+            <div class="col-md-2 text-right">ACCESS TOKEN:</div>
+            <div class="col-md-10" style="overflow-x:scroll">{{loggedUser.accessToken}}</div>
+        </div>
+        <div class="row list-group-item">
+            <div class="col-md-2 text-right">Companies</div>
+            <div class="col-md-10">
+                <i *ngFor="let company of loggedUser.companies; let i = index">
+                    {{company.description}}<span *ngIf="loggedUser.companies.length > i+1">,</span>
+                </i>
+            </div>
+        </div>
+    </div>
+</div>

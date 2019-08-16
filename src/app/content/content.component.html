@@ -1,0 +1,32 @@
+<div class="example-container">
+    <mat-toolbar color="" class="example-toolbar">
+        <mat-toolbar-row>
+            <span>To find vendor press "Search" button and provide search criteria...</span>
+            <span class="example-spacer"></span>
+            <a (click)='snav2.toggle()' style="cursor:pointer;">
+                <span>Search</span>
+                <mat-icon class="example-icon">search</mat-icon>
+            </a>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-sidenav-container class="example-sidenav-container">
+        <mat-sidenav #snav2 mode='over' style="max-width: 250px" position="end">
+            <app-search-form (vendorsSearch)="onVendorsFound($event);snav2.toggle()">
+            </app-search-form>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <div class="spinner-box" *ngIf="loginInProccess">
+                <app-spinner></app-spinner>
+            </div>
+            <div class="container" *ngIf="!loginInProccess">
+                <div *ngFor="let vendor of foundVendors">
+                    <div class="row">
+                        <div class="col-sm-4">{{vendor.id}}</div>
+                        <div class="col-sm-4">{{vendor.account}}</div>
+                        <div class="col-sm-4">{{vendor.name}}</div>
+                    </div>
+                </div>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

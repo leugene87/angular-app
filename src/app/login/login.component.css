@@ -1,0 +1,29 @@
+.form-box {
+  border-style: groove;
+  border-width: 2px;
+  border-color: grey;
+  border-radius: 6px;
+  padding: 20px;
+  min-width: 100px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.form-field {
+  width: 100%;
+}
+
+.login{
+  min-height: 500px;
+  max-height: 600px;
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.errorBox{
+    color: red;
+}

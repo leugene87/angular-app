@@ -1,0 +1,25 @@
+<div class="login">
+    <app-spinner *ngIf="loginInProccess"></app-spinner>
+    <form class="form-box" (ngSubmit)=onSubmite(f) #f="ngForm" *ngIf="!loginInProccess">
+        <div *ngIf="error && !f.dirty" class="errorBox">
+            <p>
+                {{error}}
+            </p>
+        </div>
+        <h2 style="margin-bottom:15px;">Login</h2>
+        <mat-form-field class="form-field">
+            <input matInput placeholder="Username" ngModel name="username" required>
+        </mat-form-field>
+        <mat-form-field class="form-field">
+            <input matInput placeholder="Password" [type]="hidePassword ? 'password' : 'text'" ngModel name="password"
+                required>
+            <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword">
+                <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+        <mat-form-field class="form-field">
+            <input matInput placeholder="IP" name="ip" [value]="ip? ip: ''">
+        </mat-form-field>
+        <button type="submite" id="sendlogin" class="btn btn-primary" [disabled]="!f.valid">Submite</button>
+    </form>
+</div>
