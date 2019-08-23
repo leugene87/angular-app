@@ -1,26 +1,32 @@
 <div [ngClass]="{'cust-dark-theme': theme=='dark'}" class="example-container">
-    <mat-toolbar color="primary" class="example-toolbar">
-        <button mat-icon-button (click)="sNav.toggle()">
-            <mat-icon>menu</mat-icon>
-        </button>
-        <h1 class="app-top">Vendors Searcher</h1>
-        <span class="example-spacer"></span>
-        <a style="cursor:pointer;margin-top:10px;margin-right:10px;" (click)="switchTheme()">
-            <mat-icon *ngIf="theme=='light'" style="color: black">wb_incandescent</mat-icon>
+  <mat-toolbar color="primary" class="example-toolbar">
+    <button mat-icon-button (click)="sNav.toggle();">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1 class="app-top">Vendors Searcher</h1>
+    <span class="example-spacer">
+
+    </span>
+    <a class="app-top" style="cursor:pointer;margin-top:10px;margin-right:10px;" (click)="switchTheme()">
+      <!--
+                <mat-icon *ngIf="theme=='light'" style="color: black">wb_incandescent</mat-icon>
             <mat-icon *ngIf="theme=='dark'" style="color: white">wb_sunny</mat-icon>
-        </a>
-        <a class="app-top" (click)="onLogout()" style="cursor:pointer">
-            <span *ngIf="isLoggedIn" class="app-top">Logout</span>
-            <span *ngIf="!isLoggedIn" class="app-top">Login</span>
-            <!--<mat-icon>logout</mat-icon>-->
-        </a>
-    </mat-toolbar>
-    <mat-sidenav-container class="example-sidenav-container">
-        <mat-sidenav #sNav mode='side' style="width: 250px">
-            <app-side-menu (loadedMenuItem)="loadMenu($event)"></app-side-menu>
-        </mat-sidenav>
-        <mat-sidenav-content>
-            <router-outlet></router-outlet>
-        </mat-sidenav-content>
-    </mat-sidenav-container>
+            -->
+      <span *ngIf="theme=='light'" style="color: black; font-size: small"><i>Dark Theme</i></span>
+      <span *ngIf="theme=='dark'" style="color: white; font-size: small"><i>Light Theme</i></span>
+    </a>
+    <a class="app-top" (click)="onLogout()" style="cursor:pointer">
+      <span *ngIf="isLoggedIn" class="app-top">Logout</span>
+      <span *ngIf="!isLoggedIn" class="app-top">Login</span>
+      <!--<mat-icon>logout</mat-icon>-->
+    </a>
+  </mat-toolbar>
+  <mat-sidenav-container class="example-sidenav-container">
+    <mat-sidenav #sNav mode='side' style="width: 250px">
+      <app-side-menu (menuSelected)="loadMenu($event)"></app-side-menu>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>

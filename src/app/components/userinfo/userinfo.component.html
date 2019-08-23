@@ -41,9 +41,9 @@
         <div class="row list-group-item">
             <div class="col-md-2 text-right">Companies</div>
             <div class="col-md-10">
-                <i *ngFor="let company of loggedUser.companies; let i = index">
+                <span *ngFor="let company of loggedUser.companies; let i = index">
                     {{company.description}}<span *ngIf="loggedUser.companies.length > i+1">,</span>
-                </i>
+                </span>
             </div>
         </div>
     </div>

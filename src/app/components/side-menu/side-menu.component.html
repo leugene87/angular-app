@@ -1,0 +1,17 @@
+<mat-nav-list>
+  <div *ngFor="let menuItem of menu" (click)="menuItem.showHideSubMenu()">
+    <mat-list-item [routerLink]="menuItem.menuRouterLink"
+      (click)="selectedMenu=menuItem.name; currentMenu= !menuItem.subItems ? menuItem.name : currentMenu; currentSubmenu = !menuItem.subItems ? menuItem.name : currentSubmenu"
+      [ngClass]="{selectedMenuItem: menuItem.name==selectedMenu, currentMenuItem: menuItem.name==currentMenu}">
+      {{menuItem.name}}<span class="example-spacer"></span>
+      <mat-icon *ngIf="menuItem.subItems">
+        keyboard_arrow_down</mat-icon>
+    </mat-list-item>
+    <mat-nav-list style="margin-left:30px;" *ngIf="menuItem.showSubMenu">
+      <mat-list-item *ngFor="let subItem of menuItem.subItems"
+        (click)="onSubItemClick(subItem.name);selectedMenu=menuItem.name; currentMenu=menuItem.name; currentSubmenu=subItem.name"
+        [routerLink]="subItem.menuRouterLink" [ngClass]="{currentMenuItem: currentSubmenu==subItem.name}">
+        {{subItem.name}}</mat-list-item>
+    </mat-nav-list>
+  </div>
+</mat-nav-list>

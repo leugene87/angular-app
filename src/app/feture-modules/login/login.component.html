@@ -8,18 +8,18 @@
         </div>
         <h2 style="margin-bottom:15px;">Login</h2>
         <mat-form-field class="form-field">
-            <input matInput placeholder="Username" ngModel name="username" required>
+            <input matInput placeholder="Username" ngModel name="username" required autocomplete="username">
         </mat-form-field>
         <mat-form-field class="form-field">
             <input matInput placeholder="Password" [type]="hidePassword ? 'password' : 'text'" ngModel name="password"
-                required>
+                required autocomplete="new-password">
             <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword">
                 <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
         </mat-form-field>
         <mat-form-field class="form-field">
-            <input matInput placeholder="IP" name="ip" [value]="ip? ip: ''">
+            <input matInput placeholder="IP" name="ip" [(ngModel)]="ip">
         </mat-form-field>
-        <button type="submite" id="sendlogin" class="btn btn-primary" [disabled]="!f.valid">Submite</button>
+        <button type="submite" id="sendlogin" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
     </form>
 </div>

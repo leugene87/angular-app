@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { LoginService } from './login.service';
+import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -30,17 +30,20 @@ export class LoginComponent implements OnInit {
         this.password = value.password;
         this.ip = value.ip;
         this.loginInProccess = true;
-        this.loginService.doLogin(this.username, this.password, this.ip).subscribe(user => {
-            this.loginInProccess = false;
-            this.router.navigate(['/']);
-        },
+        this.loginService.doLogin(this.username, this.password, this.ip).subscribe(
+            success => {
+                this.loginInProccess = false;
+                this.loginService.isLoggedSub.next(true);
+                this.router.navigate(['/']);
+            },
             error => {
                 this.loginInProccess = false;
+                this.loginService.isLoggedSub.next(false);
                 this.error = error.message as string;
                 form.reset();
-            });
+            }
+        );
 
-        console.log(this.error);
 
     }
 

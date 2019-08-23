@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Vendor } from '../shared/models/vendor.model';
-import { VendorAccountsService } from '../shared/vendor-data.service';
+import { VendorAccountsService } from '../services/vendor-data.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -9,7 +9,6 @@ import { Subscription } from 'rxjs';
     styleUrls: ['./content.component.css']
 })
 export class ContentComponent implements OnInit, OnDestroy {
-    private foundVendors: Vendor[];
     private isSearchingSubsription: Subscription;
     public loginInProccess: boolean = false;
     constructor(private venSearchServ: VendorAccountsService) {
@@ -22,9 +21,6 @@ export class ContentComponent implements OnInit, OnDestroy {
         });
     }
 
-    onVendorsFound(result: Vendor[]) {
-        this.foundVendors = result;
-    }
     ngOnDestroy() {
         this.isSearchingSubsription.unsubscribe();
     }

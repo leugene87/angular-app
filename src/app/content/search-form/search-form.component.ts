@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { VendorAccountsService } from '../../shared/vendor-data.service';
+import { VendorAccountsService } from '../../services/vendor-data.service';
 import { Vendor } from '../../shared/models/vendor.model';
 import { NgForm } from '@angular/forms';
 import { Subject } from 'rxjs';
@@ -12,6 +12,7 @@ import { Subject } from 'rxjs';
 })
 export class SearchFormComponent implements OnInit {
     @Output() vendorsSearch = new EventEmitter<Vendor[]>();
+
     errorMsg: string;
     constructor(private accServ: VendorAccountsService) { }
 
@@ -27,6 +28,7 @@ export class SearchFormComponent implements OnInit {
         this.accServ.findVendors(formValue.criteria, formValue.searchValue).subscribe(
             foundVens => {
                 this.vendorsSearch.emit(foundVens);
+                this.accServ.vendorsSearchSubject.next(foundVens);
                 this.accServ.isSearchingSubject.next(false);
             },
             error => {
